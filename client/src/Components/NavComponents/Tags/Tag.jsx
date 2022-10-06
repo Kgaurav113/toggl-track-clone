@@ -141,7 +141,10 @@ axios
           </ModalBody>
 
           <ModalFooter>
-            <Button colorScheme='pink' width={"100%"}  onClick={handleSubmit}>
+            <Button colorScheme='pink' width={"100%"}  onClick={() => {
+          handleSubmit();
+          onClose();
+        }}>
               Create
             </Button>
             

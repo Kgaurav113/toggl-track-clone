@@ -110,7 +110,7 @@ export const Timerd = () => {
           </ModalBody>
 
           <ModalFooter>
-            <Button colorScheme='pink' w={"100%"}>
+            <Button colorScheme='pink' w={"100%"} onClick={onClose}>
               Create Project
             </Button>
           </ModalFooter>

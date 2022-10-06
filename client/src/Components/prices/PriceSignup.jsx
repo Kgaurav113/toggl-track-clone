@@ -12,54 +12,60 @@ import { IoMdArrowDropright } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 
 const PriceSignup = () => {
+  const nav=useNavigate()
+  const toast = useToast()
   const [email,setEmail] = useState('')
   const [password, setPassword] = useState('')
-  
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value)
+}
+const handlePasswordChange = (e) => {
+    setPassword(e.target.value)
+}
 
-  function ToastExample(x) {
-    const toast = useToast()
-    return (
-      <Button
-        onClick={() =>
-          toast({
-            title: `${x}`,
-            description: "We've created your account for you.",
-            status: 'success',
-            duration: 9000,
-            isClosable: true,
-          })
-        }
-      >
-        Show Toast
-      </Button>
-    )
-  }
-
-  const handleSubmit= async()=>{
-
+const handleSubmit = async () => {
     const payload = {
         email,
         password
     }
-    await fetch("https://limitless-peak-78690.herokuapp.com/auth/register"
-    , {
+     await fetch("https://limitless-peak-78690.herokuapp.com/signup"
+     , {
         method : "POST",
         body : JSON.stringify(payload),
         headers: {
             'Content-Type': 'application/json'
           },
     })
-    // if(email.length!=0 && password.length!=0)
-    // {
-    //   ToastExample("Register Successfully")
-    //     navigate("/login")
-    // }
-    // if(email.length==0 && password.length==0)
-    // {
-    //   ToastExample("Please Sigup Again")
-        
-    // }
-  }
+    .then((res) => res.json())
+    .then((res) => {
+      console.log(res)
+      //  if(res.message === "required fields are email,password")
+      //  {
+      //   toast({
+      //     title: 'Please fill the details.',
+      //     description: "Input Feilds are required .",
+      //     status: 'error',
+      //     duration: 1500,
+      //     isClosable: true,
+      //     position:"top"
+      //   })
+      //  }
+     if (res.msg === "signup successfully")
+      {
+        toast({
+          title: 'Account created.',
+          description: "We've created your account for you. Please Login",
+          status: 'success',
+          duration: 2500,
+          isClosable: true,
+          position:"top"
+        })
+        setTimeout(()=>{ nav("/login",{replace:true})},1000)
+      }
+    })
+    
+   
+}
 
   return (
     <Box mt="80px"  p={{ lg: "0px" }} textAlign={"center"}>
@@ -98,7 +104,7 @@ const PriceSignup = () => {
             color="black"
             type={"email"}
             value={email}
-            onChange={(e)=>setEmail(e.target.value)}
+            onChange={handleEmailChange} 
           />
 
           <Input
@@ -109,7 +115,8 @@ const PriceSignup = () => {
             color="black"
             type={"password"}
             value={password}
-            onChange={(e)=>setPassword(e.target.value)}
+        
+            onChange={handlePasswordChange}
           />
 
 

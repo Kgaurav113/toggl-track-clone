@@ -45,6 +45,7 @@ const Project = () => {
   
   };
   const handleSubmit = () => {
+    onClose()
     const payload = {
       id:Date.now(),
       name:name,
@@ -61,11 +62,11 @@ const Project = () => {
     })
     .then((res) => console.log(" data done"));
     
-
+    
   }
   useEffect(()=>{
     getdata()
-  },[])
+  })
   const deletedata=(id)=>{
     axios
     .delete(`https://limitless-peak-78690.herokuapp.com/project/delete/${id}`,{
@@ -118,7 +119,10 @@ const Project = () => {
           </ModalBody>
 
           <ModalFooter>
-            <Button colorScheme='pink' width={"100%"} onClick={handleSubmit}>
+            <Button colorScheme='pink' width={"100%"}   onClick={() => {
+          handleSubmit();
+          onClose();
+        }}    >
               Create Project
             </Button>
             {/* <Button onClick={onClose}>Cancel</Button> */}

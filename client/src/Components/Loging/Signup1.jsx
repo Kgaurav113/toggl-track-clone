@@ -1,5 +1,4 @@
 import {
-  Flex,
   Box,
   FormControl,
   FormLabel,
@@ -9,18 +8,15 @@ import {
   InputRightElement,
   Stack,
   Button,
-  Heading,
   Text,
   useColorModeValue,
+  Spacer,
   Link,
 } from '@chakra-ui/react';
-import { BsApple, BsGoogle } from "react-icons/bs";
 import { useState } from 'react';
-import { ChevronRightIcon, LockIcon, ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
+import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 import { useNavigate } from 'react-router-dom';
-import { FaApple, FaGoogle, FaTwitter } from 'react-icons/fa';
-import Navbar from '../NavComponents/Navbar';
-import Footer from '../Homepage/Footer';
+import { FaApple, FaGoogle} from 'react-icons/fa';
 import { useToast } from '@chakra-ui/react'
 
 export default function Signup1() {
@@ -43,7 +39,7 @@ export default function Signup1() {
           email,
           password
       }
-       await fetch("https://damp-reef-46945.herokuapp.com/auth/register"
+       await fetch("https://limitless-peak-78690.herokuapp.com/signup"
        , {
           method : "POST",
           body : JSON.stringify(payload),
@@ -54,18 +50,18 @@ export default function Signup1() {
       .then((res) => res.json())
       .then((res) => {
         console.log(res)
-         if(res.message === "required fields are email,password")
-         {
-          toast({
-            title: 'Please fill the details.',
-            description: "Input Feilds are required .",
-            status: 'error',
-            duration: 1500,
-            isClosable: true,
-            position:"top"
-          })
-         }
-        else if (res.message === "Register Successfull")
+        //  if(res.message === "required fields are email,password")
+        //  {
+        //   toast({
+        //     title: 'Please fill the details.',
+        //     description: "Input Feilds are required .",
+        //     status: 'error',
+        //     duration: 1500,
+        //     isClosable: true,
+        //     position:"top"
+        //   })
+        //  }
+       if (res.msg === "signup successfully")
         {
           toast({
             title: 'Account created.',
@@ -86,41 +82,36 @@ export default function Signup1() {
 
   
      <>
-      {/* <Navbar/> */}
-
-
-    <Box bg={"rgb(44, 19, 56)"} color={"white"}  margin={"auto"} >
+<Box bg={"rgb(44, 19, 56)"} color={"white"} px="10%">
+  <Stack spacing={5} mx={'auto'} py={12}>
+    <Stack direction={["column","column","row"]}>
+      <Link href="https://limitless-peak-78690.herokuapp.com/google">
+        <Button  h="50px" background={"white"} color={"black"} borderRadius={"16px"} leftIcon={<FaGoogle />}>
+          Login with Google
+        </Button>
+      </Link>
+      <Spacer/>
+      <Link href="/">
+        <Button h="50px"  background={"white"} color={"black"} borderRadius={"16px"}  leftIcon={<FaApple />}>
+          Login with Apple
+        </Button>
+      </Link>
+    </Stack>
      
-
-   
-   
-      <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
-      <HStack margin={"auto"}>
-      <a href="https://damp-reef-46945.herokuapp.com/google"><Button background={"white"} color={"black"} borderRadius={"16px"} leftIcon={<FaGoogle />}>
-    Login with Google
-  </Button></a>
-  <Button background={"white"} color={"black"} borderRadius={"16px"}  leftIcon={<FaApple />}>
-    Login with Apple
-  </Button>
-</HStack>
-     
-        <Box
+    <Box
           rounded={'lg'}
           bg={useColorModeValue('rgb(44, 19, 56)', 'gray.700')}
-         
-      
-          p={8}>
+          textAlign="center">
           <Stack spacing={4} >
-            
             <FormControl border='5px' id="email" >
-<FormLabel>Email</FormLabel>
-              <Input width={"100%"} type="email" placeholder="email" value={email} onChange={handleEmailChange} />
+            <FormLabel>Email</FormLabel>
+              <Input width={"100%"} h="50px" type="email" placeholder="email" value={email} onChange={handleEmailChange} />
             </FormControl>
             <FormControl id="password" >
             <FormLabel>Password</FormLabel>
               <InputGroup>
               
-                <Input  type={showPassword ? 'text' : 'password'} placeholder="password" value={password} onChange={handlePasswordChange}/>
+                <Input h="50px" type={showPassword ? 'text' : 'password'} placeholder="password" value={password} onChange={handlePasswordChange}/>
                 <InputRightElement h={'full'}>
                   <Button 
                     variant={'ghost'}
@@ -132,16 +123,14 @@ export default function Signup1() {
                 </InputRightElement>
               </InputGroup>
             </FormControl>
-
-          
-            <HStack spacing={4} pt={2}>
+            <HStack spacing={4}>
            
               <Button 
                 loadingText="Submitting"
                 borderRadius={"16px"}
                 size="lg"
-               width={"100%"}
-               marginRight={"6%"}
+                width={"95%"}
+                margin="auto"
                 bg={'rgb(229, 124, 216)'}
                 color={'white'}
                 
@@ -162,10 +151,6 @@ export default function Signup1() {
                 >
                 Sign up
               </Button>
-            
-            
-              
-              
             </HStack>
             <Stack pt={6}>
               <Text align={'center'} fontSize={"10px"}>
@@ -174,11 +159,8 @@ export default function Signup1() {
             </Stack>
           </Stack>
         </Box>
-      </Stack>
-     
-     
+      </Stack> 
    </Box>
-   {/* <Footer/> */}
    </>
    
   );

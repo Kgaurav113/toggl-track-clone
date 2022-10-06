@@ -16,7 +16,7 @@ const Track = () => {
               alt=""
             />
           </div>
-          <div>
+          <div style={{marginLeft:"20px"}}>
             <Link to={"/freelance"}>
               <p className={style.track_h1}> For freelancers and solo users</p>
               <p className={style.track_h2}>
@@ -33,7 +33,7 @@ const Track = () => {
               alt=""
             />
           </div>
-          <div>
+          <div style={{marginLeft:"30px"}}>
             <p className={style.track_h1}> For small teams </p>
             <p className={style.track_h2}>
               For teams of less than 10 that need to track projects and bill
@@ -41,7 +41,28 @@ const Track = () => {
             </p>
           </div>
         </div>
+        <div className={style.track_sub1}>
+          <div>
+            <img
+              className={style.track_img1}
+              src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTMiIGhlaWdodD0iNTMiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iOC4yNjQiIGN5PSI2LjI2NCIgcj0iNi4yNjQiIGZpbGw9IiNFODg5REMiLz48Y2lyY2xlIGN4PSI4LjI2NCIgY3k9IjIxLjY4MiIgcj0iNi4yNjQiIGZpbGw9IiNFODg5REMiLz48Y2lyY2xlIGN4PSI4LjI2NCIgY3k9IjM3LjEiIHI9IjYuMjY0IiBmaWxsPSIjRTg4OURDIi8+PGNpcmNsZSBjeD0iMjYuNTczIiBjeT0iMTEuMDgyIiByPSI2LjI2NCIgZmlsbD0iI0VEQTNFNCIvPjxjaXJjbGUgY3g9IjI2LjU3MyIgY3k9IjI2LjUiIHI9IjYuMjY0IiBmaWxsPSIjRURBM0U0Ii8+PGNpcmNsZSBjeD0iMjYuNTczIiBjeT0iNDEuOTE4IiByPSI2LjI2NCIgZmlsbD0iI0VEQTNFNCIvPjxjaXJjbGUgY3g9IjQ0Ljg4MiIgY3k9IjE1Ljg5OSIgcj0iNi4yNjQiIGZpbGw9IiNGNUNCRUYiLz48Y2lyY2xlIGN4PSI0NC44ODIiIGN5PSIzMS4zMTciIHI9IjYuMjY0IiBmaWxsPSIjRjVDQkVGIi8+PGNpcmNsZSBjeD0iNDQuODgyIiBjeT0iNDYuNzM1IiByPSI2LjI2NCIgZmlsbD0iI0Y1Q0JFRiIvPjwvc3ZnPg=="
+              alt=""
+            />
+          </div>
+          <div style={{marginLeft:"30px"}}>
+            <Link to={"/freelance"}>
+              <p className={style.track_h1}> For big teams</p>
+              <p className={style.track_h2}>
+                For growing teams that need robust and growing flexible solutions for time and project tracking
+              </p>
+            </Link>
+          </div>
+        </div>
+       
       </div>
+      <div className={style.track_sub3}>
+<p className={style.track_para}>Track has helped teams across multiple industries increase profitability and productivity, shavaing hours off admin.Explore case studies</p>
+        </div>
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import React, { useState,useEffect } from 'react'
-import style from './client.module.css';
+import style from './tag.module.css';
 import axios from "axios"; 
 import { useDisclosure } from '@chakra-ui/react'
 import {
@@ -29,18 +29,20 @@ import {
   } from '@chakra-ui/react'
   import { Select,Stack,FormControl,FormLabel,Input,Button } from '@chakra-ui/react'
   import { AiFillDelete } from 'react-icons/ai';
+import { getDate } from 'date-fns';
 
 
-const Client = () => {
+const Tag = () => {
   const token=localStorage.getItem("token")
   var userId=localStorage.getItem("userId")
     const { isOpen, onOpen, onClose } = useDisclosure()
     const initialRef = React.useRef(null)
   const finalRef = React.useRef(null)
 
-  const [client,setClient] = useState("");
+  const [tag,settag] = useState("");
 
-  const[data,setData]= useState([])
+  const [data,setData]= useState([])
+  const [search,setSearch]=useState("")
 
   
    
@@ -51,66 +53,61 @@ const Client = () => {
 // else{
 //   setLogin(true)
 // }
-
-const getdata = () => {
-    
-  axios.get("https://limitless-peak-78690.herokuapp.com/client",{
+const getdata = (val) => {
+  if(!val){
+  axios.get(`https://limitless-peak-78690.herokuapp.com/tags/${userId}`,{
    headers:{
      "authorization":`Bearer ${token}`
    }
 
   }).then((res) => setData(res.data));
+  }
+  else{
+    setData(val)
+  }
 
 };
 
 const handleSubmit = () => {
   const payload = {
     
-    clientname:client,
-  userId:userId
-
+    "tagname":tag,
+    "userId":userId
   }
   
 axios
-  .post("https://limitless-peak-78690.herokuapp.com/client/create", payload,{
+  .post(`https://limitless-peak-78690.herokuapp.com/tags/create/${userId}`,payload,{
     headers:{
       "authorization":`Bearer ${token}`
     },
    
   })
-  .then((res) => console.log(res.data));
-  
-
+  .then((res) => getdata());
 }
   
   useEffect(()=>{
+    if(data.length==0)
     getdata();
-  },[handleSubmit])
+  },[])
+
+  const handleSearch=()=>{
+    axios.get(`https://limitless-peak-78690.herokuapp.com/tags/search?tag=${search}`,{headers:{
+      "authorization":`Bearer ${token}`
+    }}).then(res=>getdata(res.data.user))
+  }
 
   const deletedata=(id)=>{
+    console.log(id)
+    axios
+    .delete(`https://limitless-peak-78690.herokuapp.com/tags/${userId}/delete/${id}`,{
+      headers:{
+        "authorization":`Bearer ${token}`
+      },
+    })
+    .then((res) => console.log(res.data));
+  }
+  
 
-    axios
-    .delete(`https://limitless-peak-78690.herokuapp.com/client/delete/${id}`,{
-      headers:{
-        "authorization":`Bearer ${token}`
-      }})
-    .then((res) => console.log(res.data));
-  }
-  const editdata=(id)=>{
-    const payload = {
-    
-      clientname:client,
-    userId:userId
-  
-    }
-    axios
-    .patch(`https://limitless-peak-78690.herokuapp.com/client/edit/${id}`,payload,{
-      headers:{
-        "authorization":`Bearer ${token}`
-      }})
-    .then((res) => console.log(res.data));
-  }
-  
 
 
   return (
@@ -118,10 +115,11 @@ axios
 
         <div className={style.first}>
             <div>
-            Clients
-            <input type="text" placeholder='Find Client...' />
+            tags
+            <input type="text" value={search} onChange={e=>setSearch(e.target.value)} placeholder='Find tag...' />
+            <Button onClick={handleSearch}>Search</Button>
             </div>
-            <button className={style.btn} onClick={onOpen} >+ New Client</button>
+            <button className={style.btn} onClick={onOpen} >+ New tag</button>
 
         </div>
         <Modal
@@ -132,11 +130,11 @@ axios
       >
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>New Client</ModalHeader>
+          <ModalHeader>New tag</ModalHeader>
           <ModalCloseButton />
           <ModalBody pb={6}>
             <FormControl>
-              <Input ref={initialRef} placeholder='Client name' value={client} onChange={(e) => {setClient(e.target.value)}} />
+              <Input ref={initialRef} placeholder='tag name' value={tag} onChange={(e) => {settag(e.target.value)}} />
             </FormControl>
 
         
@@ -155,8 +153,8 @@ axios
             All
         </div>
 
-        <div className={style.client}>
-            { data.length>0&&
+        <div className={style.tag}>
+            { data?.length>0&&
                 data?.map((item,index) => (
                     <div key={index}>
                         
@@ -173,16 +171,14 @@ axios
                                 fontSize="14px"
                                 fontWeight="500"
                             >
-                                {item.clientname} <DragHandleIcon />
+                                {item.tagname} <DragHandleIcon />
                                 </MenuButton>
                             <MenuList>
                                 {/* <MenuItem>Edit</MenuItem> */}
                                 <MenuItem color={"red"} onClick={()=>{
-                                    editdata(item._id) 
-                                    getdata()}}>Edit</MenuItem>
-                                 <MenuItem color={"red"} onClick={()=>{
-                                  deletedata(item._id) 
+                                    deletedata(item._id) 
                                     getdata()}}>Delete</MenuItem>
+                                
                             </MenuList>
                             </Menu>
                     </div>
@@ -194,4 +190,4 @@ axios
   )
 }
 
-export default Client
+export default Tag

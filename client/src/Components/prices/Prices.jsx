@@ -16,13 +16,13 @@ import Trial from "./Trial";
 const Prices = () => {
   return (
     <>
-    <Navbar/>
-    <Box
+     <Navbar/> 
+    <Box style={{width:"100%"}}
     mt="-50px"
     bg="#2c1338"
       color={"#FCE5D8"}
       fontFamily={"sans-serif"}
-      w={{ base: "100%", md: "100%", lg: "100%" }}
+      // w={{ base: "100%", md: "100%", lg: "100%" }}
       textAlign={"center"}
     >
       <PricesTop />
@@ -35,7 +35,7 @@ const Prices = () => {
       <PlanComparison/>
       <Apps/>
     </Box>
-    <Footer/>
+     <Footer/> 
     </>
   );
 };

@@ -1,4 +1,5 @@
 import React from "react";
+import { Tabs, TabList,  Tab, } from '@chakra-ui/react';
 import {
   Box,
   Button,
@@ -25,8 +26,9 @@ const navigate =useNavigate()
     setAnnual2("$20");
   };
   return (
-    <Box textAlign={"center"}>
+    <Box textAlign={"center"} >
       <Text
+        fontWeight="bold"
         fontSize={{ base: "26.4px", md: "30px", lg: "56px" }}
         mt={{ base: 5 }}
         pt={{ base: "24px", md: "27px", lg: "24px" }}
@@ -48,37 +50,19 @@ const navigate =useNavigate()
       >
         Choose your billing:
       </Text>
-      <Flex
 
-        color={"black"}
-        ml={{ base: "80px", md: "280px", lg: "620px" }}
-        mt={{ base: "20px", md: "30px", lg: "20px" }}
-      >
-        <Button
-          borderTopRightRadius={"none"}
-          borderBottomRightRadius="none"
-          w={{ base: "100px", md: "100px", lg: "150px" }}
-          h="46px"
-          borderRadius="30px"
-          _hover={{ bg: "#E57CD8" }}
-          onClick={handleAnnual}
-        >
-          Annual
-        </Button>
-        <Button
-          borderTopLeftRadius={"none"}
-          borderBottomLeftRadius="none"
-          w={{ base: "100px", md: "100px", lg: "150px" }}
-          h="46px"
-          borderRadius="30px"
-          _hover={{ bg: "#E57CD8" }}
-          onClick={handleMonthly}
-        >
-          Monthly
-        </Button>
-      </Flex>
+      <Tabs variant='unstyled' width="170px" margin="auto" borderRadius="25px" fontWeight="bold" marginTop="15px">
+        <TabList style={{backgroundColor:"white", fontWeight:"bold",color:"black", borderRadius:"25px"}}>
+          <Tab onClick={handleAnnual} _selected={{ color: 'white', bg: 'rgb(197, 111, 189)',borderTopLeftRadius:"25px",fontWeight:"bold",borderBottomLeftRadius:"25px"}}>Annual</Tab>
+          <Tab onClick={handleMonthly} _selected={{ color: 'white', bg: 'rgb(197, 111, 189)',borderTopRightRadius:"25px",fontWeight:"bold",borderBottomRightRadius:"25px"}}>Monthly</Tab>
+        </TabList>
+      </Tabs>
 
-      <Stack
+
+
+
+
+      <Stack 
         direction={{ base: "column", md: "column", lg: "row" }}
         w={{ base: "", md: "", lg: "80%" }}
         h={{ base: "", md: "", lg: "800px" }}
@@ -87,13 +71,15 @@ const navigate =useNavigate()
         gap={{ lg: "15px", base: "15px", md: "15px" }}
         mt={"70px"}
       >
-        <Box
+        <Box style={{width:"90%",margin:"auto"}}
           w={{ base: "90%", md: "", lg: "24%" }}
           m={{ base: "auto", md: "auto" }}
           border="1px solid white"
           bg="#412A4C"
+          height="843px"
         >
-          <Text
+          <div style={{height:"675px"}}>
+            <Text
             fontSize={{ base: "19.2", md: "19.2px", lg: "24px" }}
             w="80%"
             m={{
@@ -102,6 +88,7 @@ const navigate =useNavigate()
               lg: "25px 0px 0px -50px",
             }}
             fontWeight="bold"
+            marginLeft={"1%"}
           >
             Free
           </Text>
@@ -210,10 +197,11 @@ const navigate =useNavigate()
               <Box>Track time in 100+ popular tools</Box>
             </Flex>
           </Box>
+          </div>
           <Button
             fontSize={{ base: "", md: "", lg: "16px" }}
             borderRadius="30px"
-            w={{ base: "300px", md: "700px", lg: "230px" }}
+            w={{ base: "80%", md: "800px", lg: "230px" }}
             p="25px"
             bg="#2c1338"
             mt={{ base: "30px", md: "40px", lg: "70px" }}
@@ -224,14 +212,15 @@ const navigate =useNavigate()
             Get started
           </Button>
         </Box>
-        {/* **** */}
-        <Box
+        <Box style={{width:"90%",margin:"auto"}}
           w={{ base: "90%", md: "", lg: "24%" }}
           m={{ base: "auto", md: "auto" }}
           ml={{ base: "300px", md: "", lg: "" }}
           border="1px solid white"
           bg="#412A4C"
+          height="843px"
         >
+          <div style={{height:"626px"}}>
           <Text
             fontSize={{ base: "19.2", md: "19.2px", lg: "24px" }}
             w="80%"
@@ -241,6 +230,7 @@ const navigate =useNavigate()
               lg: "25px 0px 0px -50px",
             }}
             fontWeight="bold"
+            marginLeft={"1%"}
           >
             Starter
           </Text>
@@ -343,10 +333,11 @@ const navigate =useNavigate()
               <Box>View tracked time in your calendar</Box>
             </Flex>
           </Box>
+          </div>
           <Button
-            fontSize={{ base: "", md: "", lg: "16px" }}
+            fontSize={{ base: "80%", md: "", lg: "16px" }}
             borderRadius="30px"
-            w={{ base: "300px", md: "700px", lg: "230px" }}
+            w={{ base: "80%", md: "700px", lg: "230px" }}
             p="25px"
             bg="#2c1338"
             mb={{ base: "20px", md: "20px", lg: "" }}
@@ -358,7 +349,7 @@ const navigate =useNavigate()
           </Button>
         </Box>
         {/* **** */}
-        <Box
+        <Box style={{width:"90%",margin:"auto"}}
           w={{ base: "90%", md: "", lg: "24%" }}
           border="1px solid white"
           bg="#FFF3ED"
@@ -375,6 +366,7 @@ const navigate =useNavigate()
             }}
             fontWeight="bold"
             color="#E57CD8"
+            marginLeft={"1%"}
           >
             Premium
           </Text>
@@ -493,9 +485,9 @@ const navigate =useNavigate()
             </Flex>
           </Box>
           <Button
-            fontSize={{ base: "", md: "", lg: "16px" }}
+            fontSize={{ base: "100%", md: "", lg: "16px" }}
             borderRadius="30px"
-            w={{ base: "300px", md: "700px", lg: "230px" }}
+            w={{ base: "200px", md: "700px", lg: "230px" }}
             p="25px"
             bg="#E57CD8"
             mt={{ base: "30px", md: "40px", lg: "30px" }}
@@ -509,12 +501,13 @@ const navigate =useNavigate()
         </Box>
         {/* **** */}
 
-        <Box
+        <Box style={{width:"90%",margin:"auto"}}
           w={{ base: "90%", md: "90%", lg: "24%" }}
           border="1px solid white"
           bg="#412A4C"
           m={{ base: "auto", md: "auto" }}
         >
+          <div style={{height:"513px"}}>
           <Text
             fontSize={{ base: "19.2px", md: "19.2px", lg: "24px" }}
             w="85%"
@@ -524,6 +517,7 @@ const navigate =useNavigate()
               lg: "25px 0px 0px -25px",
             }}
             fontWeight="bold"
+            marginLeft={"1%"}
           >
             Enterprise
           </Text>
@@ -607,10 +601,11 @@ const navigate =useNavigate()
               <Box>Volume discounts for large teams on our annual plan</Box>
             </Flex>
           </Box>
+          </div>
           <Button
             fontSize={{ base: "", md: "", lg: "16px" }}
             borderRadius="30px"
-            w={{ base: "300px", md: "700px", lg: "230px" }}
+            w={{ base: "200px", md: "700px", lg: "230px" }}
             p="25px"
             bg="#2c1338"
             mt={{ base: "30px", md: "40px", lg: "230px" }}

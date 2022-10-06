@@ -1,8 +1,8 @@
 import React from 'react'
 import { Routes,Route } from 'react-router-dom'
-import Footer from '../Components/Homepage/Footer'
+
 import Homepage from '../Components/Homepage/Homepage'
-import Navbar from "../Components/NavComponents/Navbar"
+
 import BookDemo from '../Components/prices/BookDemo'
 import BookingConfirm from '../Components/prices/BookingConfirm'
 import ChooseToggleTime from '../Components/prices/ChooseToggleTime'
@@ -14,14 +14,15 @@ import Signupm from "../Components/Loging/Signupm"
 
 import { Stack } from '@chakra-ui/react'
 import Sidebar from "../Components/sidebar/Sidebar"
-import TopNav from '../Components/TimerPage/TopNav'
 import Project from '../Components/NavComponents/Project/Project'
 import Client from '../Components/NavComponents/Client/Client'
+import Tag from '../Components/NavComponents/Tags/Tag'
+import { Timerd } from '../Components/TimerPage/Timer'
 // import TopNav from '../../Components/TimerPage/TopNav'
 const Navroutes = () => {
   return (
     <div>
-        {/* <Navbar/> */}
+         {/* <Navbar/>  */}
       <Routes>
          <Route path="/" element={<Homepage/>}/>
          <Route path="/BookingConfirm" element={<BookingConfirm/>} />
@@ -34,23 +35,29 @@ const Navroutes = () => {
          <Route path='/signup' element={<Signupm/>}/>
          {/* <Route path="/timers" element={<Sidebarroutes/>} /> */}
            <Route path="/timer" element={
-            <Stack direction="column" gap="20px">
+            <Stack direction="row" gap="20px">
             <Sidebar/>
-            <TopNav  />
+            <Timerd  />
            </Stack>}/>
            <Route path="/project" element={
-            <Stack direction="row" gap="13%">
+            <Stack direction="row" gap="20px">
             <Sidebar/>  
             <Project/>
            </Stack>} />
            <Route path="/client" element={
-            <Stack direction="row" gap="13%" >
+            <Stack direction="row" gap="20px" >
             <Sidebar/>  
             <Client/>
-           </Stack>} />
+           </Stack>
+          } />
+           <Route path="/tag" element={
+            <Stack direction="row" gap="20px">
+            <Sidebar/>
+            <Tag  />
+           </Stack>}/>
       </Routes>
       
-  {/* <Footer/> */}
+  
 
     </div>
   )

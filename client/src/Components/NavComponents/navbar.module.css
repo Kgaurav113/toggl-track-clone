@@ -1,12 +1,29 @@
+@media screen and (max-width : 780px) {
+  .navheader{
+    display: none;
+  }
+.navbody{
+position: fixed;
+top:0px;
+
+}
+
+}
+
+
+  
 .navbar_main {
     margin: auto;
     width: 100%;
-    height: 80px;
     display: flex;
-    padding-top: 30px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    row-gap: 17px;
+    padding: 15px;
     position: sticky;
     top: 0;
-    
+    background-color: rgb(44, 19, 56);
+    border-bottom: 1px solid rgb(100, 47, 114);
   }
   /* .navbarlogo {
     width: 170px;
@@ -18,6 +35,7 @@
     /* margin: auto; */
   
     display: flex;
+    justify-content: space-between;
   }
   .nabvbar_sub1 {
     color: violet;
@@ -80,20 +98,40 @@
   }
   .button1 {
     position: fixed;
+    padding: 0px;
+    top:110px;
+    left:0px;
+    width: 100%;
+    /* border:1px solid red; */
+    border-top: 1px solid #d7cddb ;
+    z-index:100px;
+    background-color:#fce5d8 ;
   }
+  
   
   .navbar_track {
     /* background-color: rgb(92, 6, 65); */
     margin: auto;
-    margin-left: -180px;
+    /* margin-left: -180px; */
     text-align: start;
   }
-  .navbar_careers {
-    margin-left: -250px;
-  }
+  /* .navbar_careers {
+    
+  } */
   .navbarlogo {
     height: 60px;
     padding: 5px;
     opacity: 1.4;
+  }
+  .navabarlinks{
+    padding-top:7px;
+    padding-bottom:7px;
+    font-size:17px;
+  }
+  .navbarbtn{
+    font-size: 15px;
+    padding: 10px;
+    color:"white";
+    background:blue;
   }
   

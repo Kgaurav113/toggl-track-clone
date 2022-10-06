@@ -1,21 +1,22 @@
 import axios from 'axios'
 export const postdata = (send) => {
   console.log(send)
+  let user=localStorage.getItem("userId")
+  //console.log(user)
   var token=localStorage.getItem("token")
   console.log(token)
   axios
-    .post("https://damp-reef-46945.herokuapp.com/timer/create", send,{
+    .post(`https://limitless-peak-78690.herokuapp.com/timer/create/${user}`, send,{
       headers:{
-        "authorization":token
+        "authorization":`Bearer ${token}`
       }
     })
-    .then((res) => console.log(" post done"));
+    .then((res) => console.log("Post done"));
 };
 
 
 export function msToTime(duration) {
-   var milliseconds = parseInt(duration % 1000),
-     seconds = parseInt((duration / 1000) % 60),
+    var seconds = parseInt((duration / 1000) % 60),
      minutes = parseInt((duration / (1000 * 60)) % 60),
      hours = parseInt((duration / (1000 * 60 * 60)) % 24);
 
@@ -24,7 +25,7 @@ export function msToTime(duration) {
    seconds = seconds < 10 ? "0" + seconds : seconds;
 
    return (
-     hours + ":" + minutes + ":" + seconds + "." + Math.floor(milliseconds / 10)
+     hours + ":" + minutes + ":" + seconds 
    );
  }
 
@@ -33,10 +34,10 @@ export function msToTime(duration) {
   console.log(token)
   console.log(id)
   axios
-    .delete(`https://damp-reef-46945.herokuapp.com/timer/delete/${id}`,{
+    .delete(`https://limitless-peak-78690.herokuapp.com/timer/delete/${id}`,{
       headers:{
-        "authorization":token
+        "authorization":`Bearer ${token}`
       }})
-    .then((res) => console.log(" delte done"));
+    .then((res) => console.log("Delete done"));
 };
 // /timer/delete

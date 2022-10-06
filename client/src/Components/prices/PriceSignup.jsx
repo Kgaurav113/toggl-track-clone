@@ -1,15 +1,13 @@
 import React, { useState } from "react";
+import { useToast } from '@chakra-ui/react'
 import {
   Box,
   Button,
-  Divider,
   Flex,
-  Stack,
   Text,
-  Image,
   Input,
 } from "@chakra-ui/react";
-import { BsCheckLg, BsGoogle, BsApple } from "react-icons/bs";
+import { BsGoogle, BsApple } from "react-icons/bs";
 import { IoMdArrowDropright } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 
@@ -17,32 +15,50 @@ const PriceSignup = () => {
   const [email,setEmail] = useState('')
   const [password, setPassword] = useState('')
   
-  const navigate =useNavigate()
+
+  function ToastExample(x) {
+    const toast = useToast()
+    return (
+      <Button
+        onClick={() =>
+          toast({
+            title: `${x}`,
+            description: "We've created your account for you.",
+            status: 'success',
+            duration: 9000,
+            isClosable: true,
+          })
+        }
+      >
+        Show Toast
+      </Button>
+    )
+  }
 
   const handleSubmit= async()=>{
 
     const payload = {
-      email,
-      password
-  }
-   await fetch("https://damp-reef-46945.herokuapp.com/auth/register"
-   , {
-      method : "POST",
-      body : JSON.stringify(payload),
-      headers: {
-          'Content-Type': 'application/json'
-        },
-  })
-  if(email.length!=0 && password.length!=0)
-  {
-      alert("register successfully")
-      navigate("/login")
-  }
-  if(email.length==0 && password.length==0)
-  {
-      alert("please sigup")
-      
-  }
+        email,
+        password
+    }
+    await fetch("https://limitless-peak-78690.herokuapp.com/auth/register"
+    , {
+        method : "POST",
+        body : JSON.stringify(payload),
+        headers: {
+            'Content-Type': 'application/json'
+          },
+    })
+    // if(email.length!=0 && password.length!=0)
+    // {
+    //   ToastExample("Register Successfully")
+    //     navigate("/login")
+    // }
+    // if(email.length==0 && password.length==0)
+    // {
+    //   ToastExample("Please Sigup Again")
+        
+    // }
   }
 
   return (
@@ -51,7 +67,7 @@ const PriceSignup = () => {
       <Box
         m="auto"
         border={"1px solid white"}
-        w={{ lg: "70%",base:"92%" }}
+        w={{ lg: "80%",base:"92%" }}
         mt={{ lg: "0px" }}
         p={{ lg: "20px",base:"20px" }}
        
@@ -99,7 +115,7 @@ const PriceSignup = () => {
 
         {/* <Box display={{md:"flex"}} m="auto"> */}
           <Button
-            w={{ lg: "200px",base:"290px", md:"710px"}}
+            w={{ lg: "200px",base:"200px", md:"710px"}}
             bg="#e57cd8"
             color="white"
             m={{ lg: "0 0 0 25px",base:"20px 0px 0px 0px" }}

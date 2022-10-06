@@ -31,12 +31,13 @@ const Timer = () => {
   };
 
   return (
-    <div className={tstyle.maintimer}>
-      <div className={tstyle.timer}>
+    <div className={tstyle.maintimer} >
+      <div className={tstyle.timer} style={{width:"60%",margin:"auto"}}>
         {/* first child */}
-        <div className={tstyle.timer1}>
-          <h5 className={tstyle.headingTimer}>
-            <span>Stand-up meeting</span>
+        <div className={tstyle.timer1} style={{display:"flex",alignItems:"center",justifyContent:"space-between",width:"100%"}}>
+            <h5 style={{display:"block",fontWeight:"500", fontSize:"18px"}}>Stand-up meeting</h5>
+          <h5 className={tstyle.headingTimer} style={{fontWeight:"500", fontSize:"18px"}}>
+            
             {hours < 10 ? "0" + hours : hours}:
             {mintues < 10 ? "0" + mintues : mintues}:
             {second < 10 ? "0" + second : second}
@@ -54,7 +55,7 @@ const Timer = () => {
         </div>
         {/* //second div end */}
       </div>
-      <div>
+      <div style={{display:"flex",alignItems:"center",jaustifyContent:"center",flexDirection:"column"}}>
         {" "}
         <h1 className={tstyle.textundertimer}>
           “I love the ease of just clocking in <br />

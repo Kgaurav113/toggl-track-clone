@@ -24,48 +24,48 @@ export const HomepageTop = () => {
   }
 
   const handleSubmit = async () => {
-      const payload = {
-          email,
-          password
+    const payload = {
+        email,
+        password
+    }
+     await fetch("https://floating-mountain-09740.herokuapp.com/signup"
+     , {
+        method : "POST",
+        body : JSON.stringify(payload),
+        headers: {
+            'Content-Type': 'application/json'
+          },
+    })
+    .then((res) => res.json())
+    .then((res) => {
+      console.log(res)
+       if(res.message === "required fields are email,password")
+       {
+        toast({
+          title: 'Please fill the details.',
+          description: "Input Feilds are required .",
+          status: 'error',
+          duration: 1500,
+          isClosable: true,
+          position:"top"
+        })
+       }
+     if (res.message === "Register successfull")
+      {
+        toast({
+          title: 'Account created.',
+          description: "We've created your account for you. Please Login",
+          status: 'success',
+          duration: 2500,
+          isClosable: true,
+          position:"top"
+        })
+        setTimeout(()=>{ nav("/login",{replace:true})},1000)
       }
-       await fetch("https://limitless-peak-78690.herokuapp.com/signup"
-       , {
-          method : "POST",
-          body : JSON.stringify(payload),
-          headers: {
-              'Content-Type': 'application/json'
-            },
-      })
-      .then((res) => res.json())
-      .then((res) => {
-        console.log(res)
-        //  if(res.message === "required fields are email,password")
-        //  {
-        //   toast({
-        //     title: 'Please fill the details.',
-        //     description: "Input Feilds are required .",
-        //     status: 'error',
-        //     duration: 1500,
-        //     isClosable: true,
-        //     position:"top"
-        //   })
-        //  }
-       if (res.msg === "signup successfully")
-        {
-          toast({
-            title: 'Account created.',
-            description: "We've created your account for you. Please Login",
-            status: 'success',
-            duration: 2500,
-            isClosable: true,
-            position:"top"
-          })
-          setTimeout(()=>{ nav("/login",{replace:true})},1000)
-        }
-      })
-      
-     
-  }
+    })
+    
+   
+}
 
   return (
     // {{base:"",sm:"",md:"",lg:"",xl:"","2xl":""}} 

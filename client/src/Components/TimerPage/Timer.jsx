@@ -48,7 +48,7 @@ export const Timerd = () => {
 
      let getdata = () => {
       let user=localStorage.getItem("userId")
-       axios.get(`https://limitless-peak-78690.herokuapp.com/timer/${user}`,{
+       axios.get(`https://floating-mountain-09740.herokuapp.com/timer/${user}`,{
         headers:{
           "authorization":`Bearer ${token}`
         }

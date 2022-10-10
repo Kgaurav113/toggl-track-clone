@@ -55,7 +55,7 @@ const Tag = () => {
 // }
 const getdata = (val) => {
   if(!val){
-  axios.get(`https://limitless-peak-78690.herokuapp.com/tags/${userId}`,{
+  axios.get(`https://floating-mountain-09740.herokuapp.com/tags/${userId}`,{
    headers:{
      "authorization":`Bearer ${token}`
    }
@@ -76,22 +76,23 @@ const handleSubmit = () => {
   }
   
 axios
-  .post(`https://limitless-peak-78690.herokuapp.com/tags/create/${userId}`,payload,{
+  .post(`https://floating-mountain-09740.herokuapp.com/tags/create/${userId}`,payload,{
     headers:{
       "authorization":`Bearer ${token}`
     },
    
   })
   .then((res) => getdata());
+  onClose()
 }
   
   useEffect(()=>{
     if(data.length==0)
     getdata();
-  },[])
+  },[data])
 
   const handleSearch=()=>{
-    axios.get(`https://limitless-peak-78690.herokuapp.com/tags/search?tag=${search}`,{headers:{
+    axios.get(`https://floating-mountain-09740.herokuapp.com/tags/search?tag=${search}`,{headers:{
       "authorization":`Bearer ${token}`
     }}).then(res=>getdata(res.data.user))
   }
@@ -99,7 +100,7 @@ axios
   const deletedata=(id)=>{
     console.log(id)
     axios
-    .delete(`https://limitless-peak-78690.herokuapp.com/tags/${userId}/delete/${id}`,{
+    .delete(`https://floating-mountain-09740.herokuapp.com/tags/${userId}/delete/${id}`,{
       headers:{
         "authorization":`Bearer ${token}`
       },
@@ -143,7 +144,7 @@ axios
           <ModalFooter>
             <Button colorScheme='pink' width={"100%"}  onClick={() => {
           handleSubmit();
-          onClose();
+          ;
         }}>
               Create
             </Button>

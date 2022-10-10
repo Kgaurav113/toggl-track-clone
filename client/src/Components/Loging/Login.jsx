@@ -27,9 +27,7 @@ import {
   import { Link as Linkrouter } from 'react-router-dom';
 import Navbar from '../NavComponents/Navbar';
 import Footer from '../Homepage/Footer';
-  // import Footer from '../Homepage/Footer';
-  // import Navbar from '../NavComponents/Navbar';
-  // import{UseNavigate}from"react-router-dom";
+
   export default function Login() {
     const [showPassword, setShowPassword] = useState(false);
    const navigate=useNavigate()
@@ -47,71 +45,77 @@ import Footer from '../Homepage/Footer';
 
       const handleGoogle=()=>{
         alert("show me")
-        window.location.assign('https://limitless-peak-78690.herokuapp.com/auth/google')
+        window.location.assign('https://git.heroku.com/floating-mountain-09740.git/auth/google')
         navigate("/timer")
       
       }
   
       const handleSubmit = async () => {
-          const payload = {
-              email,
-              password
-          }
-          await fetch("https://limitless-peak-78690.herokuapp.com/login", {
-              method : "POST",
-              body : JSON.stringify(payload),
-              headers: {
-                  'Content-Type': 'application/json',
-                  
-                },
-          })
-          .then((res) => res.json())
-          .then((res) => {
-            console.log(res)
-             
-              if(res.msg === "invalid credential")
-           {
-            toast({
-              title: 'Please fill the details.',
-              description: "Input Feilds are required .",
-              status: 'error',
-              duration: 1500,
-              isClosable: true,
-              position:"top"
-            })
-           }
-           else if (res.msg === "please try again later")
-          {
+        const payload = {
+            email,
+            password
+        }
+        await fetch("https://floating-mountain-09740.herokuapp.com/login", {
+            method : "POST",
+            body : JSON.stringify(payload),
+            headers: {
+                'Content-Type': 'application/json',
             
-              toast({
-                title: 'Login Failed.',
-                description: "Please enter correct Details.",
-                status: 'error',
-                duration: 3000,
-                isClosable: true,
-                position:"top"
-              })
-            
-          }
-       
-           if(res.msg === "login successfull")
-          {
-            toast({
-              title: 'Logged in Successfull.',
-              description: "Welcome",
-              status: 'success',
-              duration: 2000,
-              isClosable: true,
-              position:"top"
-            })
-            localStorage.setItem("token", res.token)
-            localStorage.setItem("userId", res.userId)
-            localStorage.setItem("email",payload.email)
-            navigate("/timer")
-          }  
+                
+              },
+        })
+        .then((res) => res.json())
+        .then((res) => {
+          console.log(res)
+           
+
+            if(res.msg=== "invalid credential")
+         {
+          toast({
+            title: 'Please fill the details.',
+            description: "Input Feilds are required .",
+            status: 'error',
+            duration: 1500,
+            isClosable: true,
+            position:"top"
           })
-          .catch((err) => console.log(err))
-      }
+         }
+        
+        else if (res.msg === "please try again later")
+        {
+          toast({
+            title: 'Login Failed.',
+            description: "Wrong email or Password.",
+            status: 'error',
+            duration: 3000,
+            isClosable: true,
+            position:"top"
+          })
+        }
+        else if(res.msg === "login successfull")
+        {
+          toast({
+            title: 'Logged in Successfull.',
+            description: "Welcome",
+            status: 'success',
+            duration: 2000,
+            isClosable: true,
+            position:"top"
+          })
+          localStorage.setItem("token", res.token)
+          localStorage.setItem("email",payload.email)
+          localStorage.setItem("userId",res.userId)
+          navigate("/timer")
+        }
+        
+           
+          
+        })
+        
+        
+        .catch((err) => console.log(err))
+    }
+    
       
     return (
   

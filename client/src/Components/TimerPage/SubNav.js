@@ -32,7 +32,7 @@ const SubNav = ({count}) => {
     let getdata = () => {
       let user=localStorage.getItem("userId")
       let token=localStorage.getItem("token")
-       axios.get(`https://limitless-peak-78690.herokuapp.com/timer/${user}`,{
+       axios.get(`https://floating-mountain-09740.herokuapp.com/timer/${user}`,{
         headers:{
           "authorization":`Bearer ${token}`
         }

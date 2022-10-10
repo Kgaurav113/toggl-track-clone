@@ -18,6 +18,7 @@ import Project from '../Components/NavComponents/Project/Project'
 import Client from '../Components/NavComponents/Client/Client'
 import Tag from '../Components/NavComponents/Tags/Tag'
 import { Timerd } from '../Components/TimerPage/Timer'
+import Career from '../Components/NavComponents/Career'
 // import TopNav from '../../Components/TimerPage/TopNav'
 const Navroutes = () => {
   return (
@@ -31,6 +32,7 @@ const Navroutes = () => {
          <Route path="/YourInfo" element={<YourInfo/>} />
          <Route path="/ToggleBook" element={<ToggleBook/>} />
          <Route path="/Prices" element={<Prices/>} />
+         <Route path="/currentjobs" element={<Homepage/>} />
          <Route path="/login" element={<Login/>} />
          <Route path='/signup' element={<Signupm/>}/>
          {/* <Route path="/timers" element={<Sidebarroutes/>} /> */}

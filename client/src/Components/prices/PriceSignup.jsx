@@ -28,7 +28,7 @@ const handleSubmit = async () => {
         email,
         password
     }
-     await fetch("https://limitless-peak-78690.herokuapp.com/signup"
+     await fetch("https://floating-mountain-09740.herokuapp.comup"
      , {
         method : "POST",
         body : JSON.stringify(payload),

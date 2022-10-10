@@ -36,7 +36,7 @@ const Project = () => {
  
   const getdata = () => {
     
-    axios.get("https://limitless-peak-78690.herokuapp.com/project",{
+    axios.get("https://floating-mountain-09740.herokuapp.com/project",{
      headers:{
        "authorization":`Bearer ${token}`
      }
@@ -45,7 +45,6 @@ const Project = () => {
   
   };
   const handleSubmit = () => {
-    onClose()
     const payload = {
       id:Date.now(),
       name:name,
@@ -54,22 +53,21 @@ const Project = () => {
     }
     
   axios
-    .post("https://limitless-peak-78690.herokuapp.com/project/create", payload,{
+    .post("https://floating-mountain-09740.herokuapp.com/project/create", payload,{
       headers:{
         "authorization":`Bearer ${token}`
       },
      
     })
-    .then((res) => console.log(" data done"));
-    
-    
+    .then((res) => console.log("done",res.data));
+ 
   }
   useEffect(()=>{
     getdata()
   })
   const deletedata=(id)=>{
     axios
-    .delete(`https://limitless-peak-78690.herokuapp.com/project/delete/${id}`,{
+    .delete(`https://floating-mountain-09740.herokuapp.com/project/delete/${id}`,{
       headers:{
         "authorization":`Bearer ${token}`
       }})
@@ -119,10 +117,10 @@ const Project = () => {
           </ModalBody>
 
           <ModalFooter>
-            <Button colorScheme='pink' width={"100%"}   onClick={() => {
+            <Button colorScheme='pink' width={"100%"} onClick={() => {
           handleSubmit();
           onClose();
-        }}    >
+        }}>
               Create Project
             </Button>
             {/* <Button onClick={onClose}>Cancel</Button> */}
@@ -166,7 +164,7 @@ const Project = () => {
         </div>
         <div >
        
-          { data.length>0 &&
+          { data?.length>0 &&
             data.map((item,index) => (
               
               <div className={style.map} key ={index}>

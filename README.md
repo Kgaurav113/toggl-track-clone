@@ -29,7 +29,7 @@
 
 [![Mongodb](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white "Mongodb")]
 
-<h3 align="center"><a href="https://toggletrack.vercel.app/"><strong>Want to see live preview »</strong></a></h3>
+<h3 align="center"><a href="https://toggletrack.netlify.app/"><strong>Want to see live preview »</strong></a></h3>
 
 <p align="center"> 
     <br />&#10023;
@@ -37,7 +37,7 @@
   </p>
   
 
-#  <h1><a href="https://toggletrack.vercel.app/">Toggl Track </a> Website Clone (Learning Purpose)</h1>
+#  <h1><a href="https://toggletrack.netlify.app/">Toggl Track </a> Website Clone (Learning Purpose)</h1>
 
 # <h2>About toggl track Website : </h2>
 

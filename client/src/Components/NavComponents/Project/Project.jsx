@@ -36,7 +36,7 @@ const Project = () => {
  
   const getdata = () => {
     
-    axios.get("https://floating-mountain-09740.herokuapp.com/project",{
+    axios.get("https://tooglebackend.onrender.com/project",{
      headers:{
        "authorization":`Bearer ${token}`
      }
@@ -53,7 +53,7 @@ const Project = () => {
     }
     
   axios
-    .post("https://floating-mountain-09740.herokuapp.com/project/create", payload,{
+    .post("https://tooglebackend.onrender.com/project/create", payload,{
       headers:{
         "authorization":`Bearer ${token}`
       },
@@ -67,7 +67,7 @@ const Project = () => {
   })
   const deletedata=(id)=>{
     axios
-    .delete(`https://floating-mountain-09740.herokuapp.com/project/delete/${id}`,{
+    .delete(`https://tooglebackend.onrender.com/project/delete/${id}`,{
       headers:{
         "authorization":`Bearer ${token}`
       }})

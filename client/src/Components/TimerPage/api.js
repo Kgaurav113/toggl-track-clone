@@ -6,7 +6,7 @@ export const postdata = (send) => {
   var token=localStorage.getItem("token")
   console.log(token)
   axios
-    .post(`https://floating-mountain-09740.herokuapp.com/timer/create/${user}`, send,{
+    .post(`https://tooglebackend.onrender.com/timer/create/${user}`, send,{
       headers:{
         "authorization":`Bearer ${token}`
       }
@@ -34,7 +34,7 @@ export function msToTime(duration) {
   console.log(token)
   console.log(id)
   axios
-    .delete(`https://floating-mountain-09740.herokuapp.com/timer/delete/${id}`,{
+    .delete(`https://tooglebackend.onrender.com/timer/delete/${id}`,{
       headers:{
         "authorization":`Bearer ${token}`
       }})

@@ -39,7 +39,7 @@ export default function Signup1() {
           email,
           password
       }
-       await fetch("https://floating-mountain-09740.herokuapp.com/signup"
+       await fetch("https://tooglebackend.onrender.com/signup"
        , {
           method : "POST",
           body : JSON.stringify(payload),
@@ -85,7 +85,7 @@ export default function Signup1() {
 <Box bg={"rgb(44, 19, 56)"} color={"white"} px="10%">
   <Stack spacing={5} mx={'auto'} py={12}>
     <Stack direction={["column","column","row"]}>
-      <Link href="https://floating-mountain-09740.herokuapp.com/google">
+      <Link href="https://tooglebackend.onrender.com/google">
         <Button  h="50px" background={"white"} color={"black"} borderRadius={"16px"} leftIcon={<FaGoogle />}>
           Login with Google
         </Button>

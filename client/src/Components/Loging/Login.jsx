@@ -45,7 +45,7 @@ import Footer from '../Homepage/Footer';
 
       const handleGoogle=()=>{
         alert("show me")
-        window.location.assign('https://git.heroku.com/floating-mountain-09740.git/auth/google')
+        window.location.assign('https://tooglebackend.onrender.com/auth/google')
         navigate("/timer")
       
       }
@@ -55,7 +55,7 @@ import Footer from '../Homepage/Footer';
             email,
             password
         }
-        await fetch("https://floating-mountain-09740.herokuapp.com/login", {
+        await fetch("https://tooglebackend.onrender.com/login", {
             method : "POST",
             body : JSON.stringify(payload),
             headers: {

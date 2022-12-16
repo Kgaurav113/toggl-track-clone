@@ -55,7 +55,7 @@ const Client= () => {
 // }
 const getdata = (val) => {
   if(!val){
-  axios.get(`https://floating-mountain-09740.herokuapp.com/client/${userId}`,{
+  axios.get(`https://tooglebackend.onrender.com/client/${userId}`,{
    headers:{
      "authorization":`Bearer ${token}`
    }
@@ -76,7 +76,7 @@ const handleSubmit = () => {
   }
   
 axios
-  .post(`https://floating-mountain-09740.herokuapp.com/client/create/${userId}`,payload,{
+  .post(`https://tooglebackend.onrender.com/client/create/${userId}`,payload,{
     headers:{
       "authorization":`Bearer ${token}`
     },
@@ -92,7 +92,7 @@ axios
   },[data])
 
   const handleSearch=()=>{
-    axios.get(`https://floating-mountain-09740.herokuapp.com/client/search?client=${search}`,{headers:{
+    axios.get(`https://tooglebackend.onrender.com/client/search?client=${search}`,{headers:{
       "authorization":`Bearer ${token}`
     }}).then(res=>getdata(res.data.user))
   }
@@ -100,7 +100,7 @@ axios
   const deletedata=(id)=>{
     console.log(id)
     axios
-    .delete(`https://floating-mountain-09740.herokuapp.com/client/${userId}/delete/${id}`,{
+    .delete(`https://tooglebackend.onrender.com/client/${userId}/delete/${id}`,{
       headers:{
         "authorization":`Bearer ${token}`
       },
